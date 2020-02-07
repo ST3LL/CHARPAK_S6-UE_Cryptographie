@@ -5,9 +5,10 @@ Created on Fri Jan 24 09:22:57 2020
 @author: tinou_99
 """
 
-import os
+import numpy as np
 
-with open('nom_du_fichier.txt', 'r') as file:
+
+with open('message1.txt', 'r') as file:
     message = file.read() 
     
     
@@ -38,5 +39,23 @@ def frequences(texte):
 
 
 
+def decrypt(texte, nb):
+    tab = [texte[k: k + nb] for k in range(0,len(texte)+1,nb+1)]
+    
+    return tab
+    
+    
+    
+
 if __name__ == "__main__":
-    frequences(message)
+    """
+    for e in reversed(sorted(frequences(message).items(), key=lambda t: t[1])):
+        print(e)
+    """
+    for cle in range(1,1000):
+        print("".join([l[0] for l in decrypt(message, cle) if len(l) != 0]))
+        #print("".join(l[0] for l in oui))
+    
+    
+        
+        
