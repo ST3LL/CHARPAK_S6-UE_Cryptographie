@@ -40,22 +40,24 @@ def frequences(texte):
 
 
 def decrypt(texte, nb):
-    tab = [texte[k: k + nb] for k in range(0,len(texte)+1,nb+1)]
-    
-    return tab
-    
-    
-    
+    # tab = [list(texte[k: k + nb]) for k in range(0,len(texte),nb)]
+    return "".join([texte[k::nb] for k in range(0,nb)])
+
 
 if __name__ == "__main__":
     """
     for e in reversed(sorted(frequences(message).items(), key=lambda t: t[1])):
         print(e)
     """
-    for cle in range(1,1000):
+    """
+    for cle in range(1,len(message)):
         print("".join([l[0] for l in decrypt(message, cle) if len(l) != 0]))
         #print("".join(l[0] for l in oui))
+    """
     
+    d = {cle: decrypt(message, cle).split("\n")[0] for cle in range(1,len(message))}
     
+
+    #print(decrypt(message, 18))
         
         
