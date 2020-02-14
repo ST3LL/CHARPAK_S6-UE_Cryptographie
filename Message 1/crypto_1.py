@@ -57,7 +57,7 @@ if __name__ == "__main__":
     
     d = {cle: decrypt(message, cle).split("\n")[0] for cle in range(1,len(message))}
     
-
-    #print(decrypt(message, 18))
+    for k,v in d.items():
+        print(k,v)
         
         
