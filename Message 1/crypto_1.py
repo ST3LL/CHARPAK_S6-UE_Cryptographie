@@ -6,6 +6,10 @@ Created on Fri Jan 24 09:22:57 2020
 """
 
 
+#La clé est 1447
+
+
+
 with open('message1.txt', 'r') as file:
     message = file.read() 
     
@@ -25,10 +29,11 @@ if __name__ == "__main__":
         print("".join([l[0] for l in decrypt(message, cle) if len(l) != 0]))
         #print("".join(l[0] for l in oui))
     """
-    
-    d = {cle: decrypt(message, cle).split("\n")[0] for cle in range(1,len(message))}
+
+    d = {cle: decrypt(message, cle).split("\n")[0] for cle in range(1,1460)}
     
     for k,v in d.items():
         print(k,v)
-        
+
+    #print(decrypt(message, 1447))
         
