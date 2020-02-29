@@ -27,15 +27,22 @@ def cesar(message, decalage):
         crypt = cesar_chiffrage(unicode, decalage)
         new_message.append(chr(crypt))
     new_message = "".join(new_message)
+    
     return(new_message)
     
 
 if __name__ == "__main__":  
-    for i in range(25, 50):
+    for i in range(-50, 100):
+        for j in cesar(message, i):
+            if j == "e":
+                print("Clé : ", i)
+                print(cesar(message, i))
+                
+        """
         print("Clé : ", i)
         print(cesar(message, i))
         print("_____________________________________________")
-
+        """
    
 
 
