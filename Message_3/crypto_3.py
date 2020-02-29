@@ -8,7 +8,7 @@ Created on Fri Feb 14 08:53:46 2020
 #La clé est 8
 
 
-with open('message2.txt', 'r') as file:
+with open('message3.txt', 'r') as file:
     message = file.read() 
 #print(message)
 
@@ -31,11 +31,11 @@ def cesar(message, decalage):
     
 
 if __name__ == "__main__":  
-    for i in range(-18, 0):
+    for i in range(25, 50):
         print("Clé : ", i)
         print(cesar(message, i))
         print("_____________________________________________")
 
-    
+   
 
 
