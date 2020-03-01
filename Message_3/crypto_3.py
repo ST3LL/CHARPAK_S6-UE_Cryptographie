@@ -5,7 +5,7 @@ Created on Fri Feb 14 08:53:46 2020
 @author: tinou
 """
 
-#La clé est 8
+#La clé est ?
 
 
 with open('message3.txt', 'r') as file:
@@ -32,11 +32,10 @@ def cesar(message, decalage):
     
 
 if __name__ == "__main__":  
-    for i in range(-50, 100):
-        for j in cesar(message, i):
-            if j == "e":
-                print("Clé : ", i)
-                print(cesar(message, i))
+    for i in range(0, 100):
+        if "e" in cesar(message, i):
+            print("Clé : ", i)
+            print(cesar(message, i))
                 
         """
         print("Clé : ", i)
