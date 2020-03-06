@@ -32,11 +32,11 @@ def cesar(message, decalage):
     
 
 if __name__ == "__main__":  
-    for i in range(0, 100):
-        if "e" in cesar(message, i):
+    for i in range(-13, 1000):
+        if " " in cesar(message, i):
             print("Clé : ", i)
             print(cesar(message, i))
-                
+          
         """
         print("Clé : ", i)
         print(cesar(message, i))
