@@ -5,7 +5,7 @@ Created on Fri Feb 14 08:53:46 2020
 @author: tinou
 """
 
-#La clé est 8
+#La clé est -8
 
 
 with open('message2.txt', 'r') as file:
