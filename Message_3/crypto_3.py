@@ -4,7 +4,7 @@ Created on Fri Feb 14 08:53:46 2020
 
 @author: tinou
 """
-#La clé est ?
+#La clé est 263
 
 
 with open('message3.txt', 'r') as file:
@@ -32,7 +32,7 @@ def cesar(message, decalage):
     new_message = []
     for l in message:
         unicode = ord(l) 
-        crypt = cesar_chiffrage(unicode, decalage)
+        crypt = cesar_dechiffrage(unicode, decalage)
         new_message.append(chr(crypt))
     new_message = "".join(new_message)
     
@@ -43,28 +43,16 @@ def cesar(message, decalage):
 if __name__ == "__main__":
     fs = frequences(message)
     lettre_max = max([(fs[e], e) for e in fs], key= lambda x : x[0])
-    print(lettre_max)
-    print(ord(lettre_max[1]))
-    print(ord(" "))
-    for i in range(ord(lettre_max[1]) + ord(" "), ord(lettre_max[1]) - ord(" ")):
-        print(cesar(message, i))
+    #print(lettre_max)
+    #print(ord(lettre_max[1]))
+    #print(ord(" "))
+    
+    nb_cod = ord(lettre_max[1])
+    nb_freq = ord(" ")
+    nb = nb_cod - nb_freq
+    print(nb)
+    print(cesar(message, nb))
     
     
     
-    """
-    print(max([(message.count(e), e) for e in set(message)], key= lambda x : x[0]))
-    print(cesar(message, -63))
-    print(cesar(message, 127))
-    for i in range(-13, 1000):
-        print(cesar(message, i))
     
-        if " " in cesar(message, i):
-            print("Clé : ", i)
-            print(cesar(message, i))
-           print("Clé : ", i)
-        print(cesar(message, i))
-        print("_____________________________________________")
-    """
-   
-
-
