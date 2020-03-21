@@ -22,17 +22,39 @@ def new_freq(m):
 """
 
 
+"""
 def d_vigenere(message, key):
     m = ""
     i = 0
     for l in message :
-        d = ord(l)-65
-        nb2 = (d + key[i]) % 26
+        d = ord(l) - 65
+        nb2 = (d + key[i])%26
         i = (i + 1) % len(key)
         m += chr(nb2 + 65)
     return m
+ """
+ 
+def decalage_g(c, k):
+    return chr(ord(c) - ord(k))
+ 
+def decalage_d(c, k):
+    return chr(ord(c) + ord(k))
  
     
+def d_vigenere(message, k):
+    n_message = list(message)
+    k = list(key)
+    m = []
+    i = 0
+    for l in message :
+        print(l)
+        print(ord(l))
+        print(ord(l)-ord(k[i]))
+        i += 1
+        #m.append(decalage_g(l, k[i]))
+        #n_message = ''.join(m)
+        #i += 1
+    #return n_message
     
 if __name__ == "__main__":
     message = "dhkmjcmhvwiilrpzi"
