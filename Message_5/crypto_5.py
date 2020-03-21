@@ -19,10 +19,9 @@ def new_freq(m):
         if 0 <= i > 26:
             l[i] = l[i] + 1
     return (l)
-"""
 
 
-"""
+
 def d_vigenere(message, key):
     m = ""
     i = 0
@@ -32,7 +31,7 @@ def d_vigenere(message, key):
         i = (i + 1) % len(key)
         m += chr(nb2 + 65)
     return m
- """
+"""
  
 def decalage_g(c, k):
     return chr(ord(c) - ord(k))
@@ -40,27 +39,24 @@ def decalage_g(c, k):
 def decalage_d(c, k):
     return chr(ord(c) + ord(k))
  
+#ValueError: chr() arg not in range(0x110000) 
     
-def d_vigenere(message, k):
+
+def d_vigenere(message, key):
     n_message = list(message)
     k = list(key)
     m = []
     i = 0
     for l in message :
-        print(l)
-        print(ord(l))
-        print(ord(l)-ord(k[i]))
+        m.append(decalage_g(l, k[i]))
+        n_message = ''.join(m)
         i += 1
-        #m.append(decalage_g(l, k[i]))
-        #n_message = ''.join(m)
-        #i += 1
-    #return n_message
-    
+    return n_message
+     
 if __name__ == "__main__":
     message = "dhkmjcmhvwiilrpzi"
     key = "bachelierbachelie"
     print(d_vigenere(message, key))
-    
     
     
     
