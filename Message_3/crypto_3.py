@@ -11,6 +11,7 @@ with open('message3.txt', 'r') as file:
     message = file.read() 
 #print(message)
 
+
 def frequences(texte):
     d = dict()
     for l in texte:
@@ -21,37 +22,35 @@ def frequences(texte):
     return d
 
 
+def cle_probable(message):
+    carac = frequences(message)
+    carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
+    cle = ord(carac_max[1]) - ord(' ') 
+    return cle
+
+
 def cesar_chiffrage(nb, decalage):
-    return(nb + decalage)
+    return (ord(nb) + decalage)
     
 def cesar_dechiffrage(nb, decalage):
-    return(nb - decalage)
+    return (ord(nb) - decalage)
     
 
 def cesar(message, decalage):
     new_message = []
-    for l in message:
-        unicode = ord(l) 
-        crypt = cesar_dechiffrage(unicode, decalage)
-        new_message.append(chr(crypt))
-    new_message = "".join(new_message)
-    
-    return(new_message)
-        
-    
+    m = list(message)
+    for l in m:
+        crypt = chr(cesar_dechiffrage(l, decalage))
+        new_message.append(crypt)
+    new = "".join(new_message)
+    return new
+
 
 if __name__ == "__main__":
-    fs = frequences(message)
-    lettre_max = max([(fs[e], e) for e in fs], key= lambda x : x[0])
-    #print(lettre_max)
-    #print(ord(lettre_max[1]))
-    #print(ord(" "))
+    print(cesar(message, cle_probable(message)))
     
-    nb_cod = ord(lettre_max[1])
-    nb_freq = ord(" ")
-    nb = nb_cod - nb_freq
-    print(nb)
-    print(cesar(message, nb))
+    
+    
     
     
     
