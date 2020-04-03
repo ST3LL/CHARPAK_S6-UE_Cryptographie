@@ -1,41 +1,53 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 10 09:03:00 2020
+Created on Fri Feb 14 08:53:46 2020
 
-@author: tinou_99
+@author: tinou
 """
 
-with open('message4.txt', 'r') as file:
+
+with open('message3.txt', 'r') as file:
     message = file.read() 
 #print(message)
-    
-    
+
+
+def frequences(texte):
+    d = dict()
+    for l in texte:
+        if l not in d:
+            d[l] = 1
+        else:
+            d[l] += 1
+    return d
+
+
+def cle_probable(message):
+    carac = frequences(message)
+    carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
+    cle = ord(carac_max[1]) - ord(' ') 
+    return cle
+
+
 def cesar_chiffrage(nb, decalage):
-    return(nb + decalage)
+    return (ord(nb) + decalage)
     
 def cesar_dechiffrage(nb, decalage):
-    return(nb - decalage)
-    
-    
-def cesar(message, decalage):
-    new_message = []
-    for l in message:
-        unicode = ord(l) 
-        crypt = cesar_dechiffrage(unicode, decalage)
-        new_message.append(chr(crypt))
-    new_message = "".join(new_message)
-    
-    return(new_message)
-        
+    return (ord(nb) - decalage)
     
 
+def cesar(message, decalage):
+    new_message = []
+    m = list(message)
+    for l in m:
+        crypt = chr(cesar_dechiffrage(l, decalage))
+        new_message.append(crypt)
+    new = "".join(new_message)
+    return new
+
+
 if __name__ == "__main__":
-    fs = frequences(message)
-    lettre_max = max([(fs[e], e) for e in fs], key= lambda x : x[0])
+    print(cesar(message, cle_probable(message)))
     
-    nb_cod = ord(lettre_max[1])
-    nb_freq = ord(" ")
-    nb = nb_cod - nb_freq
-    print(nb)
-    print(cesar(message, nb))
+
+    
+    
