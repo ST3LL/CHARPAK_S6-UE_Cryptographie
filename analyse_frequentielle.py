@@ -4,7 +4,9 @@ Created on Fri Feb 14 09:58:22 2020
 
 @author: tinou
 """
+import string 
 
+#fréquence avec un dictionnaire
 def frequences(texte):
     """
     Prend en argument une chaîne de caractères et renvoie un dictionnaire 
@@ -28,3 +30,36 @@ def frequences(texte):
         else:
             d[l] += 1
     return d
+
+
+
+#le caractère le plus fréquent
+def caractere_plus_frequent(texte):
+    t = list(texte)
+    #new_list = []
+    lettres = set(t)
+    nb_lettres = sorted(lettres, key = lambda self, other = t: other.count(self), reverse = True)    
+    return nb_lettres
+    
+ 
+    
+#liste des caractères les plus fréquents
+def frequency(word) :
+    freq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for letter in word :
+        if letter in string.ascii_lowercase :
+            freq[ord(letter) - ord('a')] += 1
+                 
+    sup = [i for i, j in enumerate(freq) if j == (max(freq))] 
+    new_freq = []
+    for k in sup :
+        new_freq.append(string.ascii_lowercase[k]) 
+    return max(freq), new_freq
+
+
+
+
+if __name__ == "__main__":
+    #print(caractere_plus_frequent("anticonstitutionnellement"))
+    print(frequency("anticonstitutionnellement"))
+    
