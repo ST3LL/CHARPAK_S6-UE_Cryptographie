@@ -13,8 +13,8 @@ with open('message5.txt', 'r') as file:
 #print(message)
 
 
-
-def d_vigenere(message,key) :
+#déchiffrage vigenère pour 26 lettres alphabet français 
+def d_vigenere_abc(message,key) :
     cypher=[]
     for i,letter in enumerate(message) :
         if letter in string.ascii_lowercase :
@@ -28,5 +28,5 @@ def d_vigenere(message,key) :
 if __name__ == "__main__":
     message = "dhkmjcmhvwiilrpzi"
     key = "bachelierbachelie"
-    print(d_vigenere(message, key))
+    print(d_vigenere_abc(message, key))
     
