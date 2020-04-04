@@ -11,7 +11,7 @@ Created on Fri Apr  3 15:06:27 2020
 with open('nomdufichier.txt', 'r') as file:
     message = file.read() 
 print(message)
-    
+ 
 
 
 def frequences(texte):
@@ -50,7 +50,7 @@ def cle_probable(message):
     Sortie:
         (int) 
     Test:
-        >>> cle_probable() == 
+        >>> cle_probable("Jzi~w()(^w}{(i~m(lñkpqnnzñ(tm(um{{iom6") == -8
         True
     """
     carac = frequences(message)
@@ -104,8 +104,8 @@ def cesar(message, cle):
     Sortie:
         (str)
     Test:
-        >>> message = "Jzi~w()(^w}{(i~m(lñkpqnnzñ(tm({mkwvl(um{{iom6"
-        >>> cesar(message, -8) == "Bravo ! Vous avez déchiffré le second message."
+        >>> message = "Jzi~w()(^w}{(i~m(lñkpqnnzñ(tm(um{{iom6"
+        >>> cesar(message, -8) == "Bravo ! Vous avez déchiffré le message."
         True
     """
     new_message = []
