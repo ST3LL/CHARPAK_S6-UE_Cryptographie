@@ -22,10 +22,13 @@ def frequences(texte):
 
 
 def cle_probable(message):
-    carac = frequences(message)
-    carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
-    cle = ord(carac_max[1]) - ord(' ') 
-    return cle
+    for i in enumerate(message):
+        carac = frequences(message)
+        pcarac_max = (max([(carac[e], e) for e in carac], key= lambda x : x[0]) if i % 2 == 0)
+        cle_pair = ord(pcarac_max[1]) - ord(' ') 
+        icarac_max = max([(icarac[e], e) for e in icarac], key= lambda x : x[0])
+        cle_impair = ord(icarac_max[1]) - ord(' ') 
+    return cle_pair, cle_impair
 
 
 def cesar_chiffrage(nb, decalage):
@@ -35,11 +38,12 @@ def cesar_dechiffrage(nb, decalage):
     return (ord(nb) - decalage)
     
 
-def cesar(message, decalage):
+def cesar(message, cle_pair, cle_impair):
     new_message = []
-    m = list(message)
-    for l in m:
-        crypt = chr(cesar_dechiffrage(l, decalage))
+    cle_pair = cle_probable[0]
+    cle_impair = cle_probable[1]
+    for i, l in enumerate(message):
+        crypt = chr(cesar_dechiffrage(l, cle_pair if i % 2 == 0 else cle_impair))
         new_message.append(crypt)
     new = "".join(new_message)
     return new
