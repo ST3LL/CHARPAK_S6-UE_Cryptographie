@@ -38,8 +38,7 @@ def frequences(texte):
 
 
 
-def cle_probable(message):
-    n_carac = colleur(message)
+def cle_probable(n_carac):
     carac = frequences(n_carac)
     carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
     cle = ord(carac_max[1]) - ord(' ') 
@@ -48,7 +47,7 @@ def cle_probable(message):
 
 
 def cesar_dechiffrage(lettre, cle):
-    return (ord(lettre) + cle)
+    return (ord(lettre) - cle)
     
     
 
@@ -77,7 +76,10 @@ def colleur(v_msg):
     n_msg = []
     for c in range(len(v_msg)):
         for e in range(len(v_msg[c])):
-            n_msg.append(v_msg[c])
+            try : 
+                n_msg.append(v_msg[e][c])
+            except : 
+                pass
     return ''.join(n_msg)
 
 
@@ -86,7 +88,7 @@ def d_vigenere(message, l_cle):
     n_msg = []
     sep = separateur(message, l_cle) 
     for c in sep :
-        cle = cle_probable(sep[c])
+        cle = cle_probable()
         n_msg.append(cesar(c, cle))
     return colleur(n_msg)
 
