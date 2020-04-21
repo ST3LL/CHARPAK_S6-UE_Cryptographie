@@ -8,11 +8,23 @@ Created on Sat Apr 18 11:56:31 2020
 
 with open('nomdufichier.txt', 'r') as file:
     message = file.read() 
-print(message)
 
 
 
 def mot_plus_long(message):
+    """
+    Prend en argument une chaîne de caractères représentant un message. 
+    Renvoie un tuples constitué du mot le plus long du message et de la 
+    longueur du mot le plus long.
+        
+    Entrée:
+        (str)
+    Sortie:
+        (str, int) 
+    Test:
+        >>> mot_plus_long("message super secret ahah") == ("message", 7) 
+        True
+    """
     mot_long = ""
     msg = message.split()
     for mot in msg:
@@ -33,14 +45,21 @@ def frequences(texte):
 
 
 
-def freq_max(msg):
-    carac = frequences(msg)
-    carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
-    return carac_max
-
-
-
 def d_vigenere_abc(message,cle) :
+    """
+    Prend en argument une chaîne de caractères représentant un message et une 
+    chaîne de caractère représentant la clé. Renvoie une chaîne de caractères 
+    correspond au déchiffrage du message en appliquant la méthode dite de 
+    vigenère (seulement pour les 26 lettres de l'alphabet français).
+        
+    Entrée:
+        (str, str)
+    Sortie:
+        (str) 
+    Test:
+        >>> d_vigenere_abc("ovqhtug jsexf uvagxh", "crypto") == message super secret 
+        True
+    """
     l=[]
     for c,lettre in enumerate(message) :
         if lettre in string.ascii_lowercase :
@@ -52,35 +71,29 @@ def d_vigenere_abc(message,cle) :
 
 
 def dechiffre_vignere(message, cle):
+    """
+    Prend en argument une chaîne de caractères représentant un message et 
+    entier la clé. Renvoie une chaîne de caractères correspond au déchiffrage 
+    du message en appliquant la méthode dite de vigenère.
+        
+    Entrée:
+        (str, int)
+    Sortie:
+        (str) 
+    Test:
+        >>> dechiffre_vigenere("ow zcy'ult2 le{", [2, 18, 45, 7]) == message super secret 
+        True
+    """
     l = []
     for c, lettre in enumerate(message):
-        e = ord(lettre) - cle[c % len(cle)]
+        e = ord(lettre) + cle[c % len(cle)]
         n_lettre = chr(e % 255)
         l.append(n_lettre)
     return "".join(l)
 
 
 
-"""
-def cle_probable(n_carac):
-    carac = frequences(n_carac)
-    carac_max = max([(carac[e], e) for e in carac], key= lambda x : x[0])
-    cle = ord(carac_max[1]) - ord(' ') 
-    return cle
-    
-    
-    
-def indice_coincidence(message) :
-    freq = frequences(message) 
-    s = sum (n*(n-1) for n in freq)
-    somme = sum(freq)
-    return s / (somme*(somme-1))
-"""
-
-
-
 if __name__ == "__main__":
-    #cle = [-23, -45]
     #cle = [2,9,3]
     #print(dechiffre_vignere(message, cle))
     #print(cle_probable(message))
