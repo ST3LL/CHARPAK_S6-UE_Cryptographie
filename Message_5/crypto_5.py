@@ -6,24 +6,13 @@ Created on Thu Mar 19 16:13:41 2020
 @author: tinou_99
 """
 
-import string
+import matplotlib.pyplot as plt
+
+
 
 with open('message5.txt', 'r') as file:
     message = file.read() 
 #print(message)
-
-
-#déchiffrage vigenère pour 26 lettres alphabet français 
-def d_vigenere_abc(message,cle) :
-    c=[]
-    for i,lettre in enumerate(message) :
-        if lettre in string.ascii_lowercase :
-            lettre = ord(lettre) - ord(cle[i % len(cle)])
-            lettre = chr(lettre % 26 + ord('a'))            
-        c.append(lettre)
-    return "".join(c)
-
-
 
 
 
@@ -55,27 +44,31 @@ def cesar(message, cle):
     new_message = []
     m = list(message)
     for l in m:
-        crypt = chr(cesar_dechiffrage(l, cle))
+        try:
+            crypt = chr(cesar_dechiffrage(l, cle))
+        except:
+            crypt = "#"
         new_message.append(crypt)
     new = "".join(new_message)
     return new
 
 
+
 def separateur(message, l_cle):
-    sep = []
-    for c in range(l_cle):
-        sous_sep = []
-        for e in range(c, len(message), l_cle): #pas de longueur de la clé
-            sous_sep.append(message[e])
-        sep.append(sous_sep)
-    return sep
+    return [message[c: len(message): l_cle] for c in range(l_cle)]
+    
+
+
+def liste_plus_grand(l_liste):
+    return max(map(len, l_liste))
 
 
 
 def colleur(v_msg):
     n_msg = []
-    for c in range(len(v_msg)):
-        for e in range(len(v_msg[c])):
+    taille_max = liste_plus_grand(v_msg)
+    for c in range(taille_max):
+        for e in range(len(v_msg)):
             try : 
                 n_msg.append(v_msg[e][c])
             except : 
@@ -84,35 +77,28 @@ def colleur(v_msg):
 
 
 
-def d_vigenere(message, l_cle):
-    n_msg = []
-    sep = separateur(message, l_cle) 
-    for c in sep :
-        cle = cle_probable()
-        n_msg.append(cesar(c, cle))
-    return colleur(n_msg)
+def auto_cesar(message):
+    return cesar(message, cle_probable(message))
 
 
 
+def auto_vigenere(message, l_cle):
+    sep = separateur(message, l_cle)
+    l = [auto_cesar(e) for e in sep]
+    return colleur(l)
 
-"""
-def d_vigenere(message, cle) :
-    n_msg = []
-    n_cle = [ord(e) for e in cle]
-    msg = [ord(k) for k in message]
-    for i in message :
-        msg[i] -= int(n_cle[i % len(n_cle)])
-        #print(msg[i])
-        n_msg.append(chr(msg[i]))  
-        sup = cle_probable(message)
-        n_msg = cesar(message, sup)    
-    return "".join(n_msg)
-"""
+
+
+def mot_plus_long(message):
+    return max(map(len,message.split(' ')))
 
 
  
 if __name__ == "__main__":
-    message = "dhkmjcmhvwiilrpzi"
+    #print(auto_vigenere(message, 2))
+    print(mot_plus_long(message))
+    plt.plot([mot_plus_long(auto_vigenere(message, i)) for i in range(1,10)]) #probabilité d'avoir une longueur de clé de ...
+    plt.show()
+    
     l_cle = 3
-    #print(d_vigenere_abc(message, key))
-    print(d_vigenere(message,l_cle))
+    print(auto_vigenere(message,l_cle))
