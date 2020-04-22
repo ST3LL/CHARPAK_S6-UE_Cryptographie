@@ -8,29 +8,6 @@ Created on Sat Apr 18 11:56:31 2020
 
 with open('nomdufichier.txt', 'r') as file:
     message = file.read() 
-
-
-
-def mot_plus_long(message):
-    """
-    Prend en argument une chaîne de caractères représentant un message. 
-    Renvoie un tuples constitué du mot le plus long du message et de la 
-    longueur du mot le plus long.
-        
-    Entrée:
-        (str)
-    Sortie:
-        (str, int) 
-    Test:
-        >>> mot_plus_long("message super secret ahah") == ("message", 7) 
-        True
-    """
-    mot_long = ""
-    msg = message.split()
-    for mot in msg:
-        if len(mot) > len(mot_long):
-            mot_long = mot
-    return mot_long, len(mot_long)
         
 
 
