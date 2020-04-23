@@ -22,7 +22,7 @@ def scytale(message, cle):
     Sortie:
         (str) 
     Test:
-        >>> scytale("mgpeeeecs rrss eaust", 3) == message super secret 
+        >>> scytale("mseureeea p ctsgsesr ", 3) == message super secret 
         True
     """
     n_msg = []
@@ -33,6 +33,25 @@ def scytale(message, cle):
     
 
     
+def auto_scytale(message):
+    """
+    Prend en argument une chaîne de caractères. Renvoie une chaîne de 
+    caractères pour laquelle on a appliqué la fonction scytale() à partir d'une
+    clé.
+        
+    Entrée:
+        (str)
+    Sortie:
+        (str) 
+    Test:
+        >>> auto_scytale("mseureedJlea p cteo sgsesr  ë ") == message super secret de Joël
+        True
+    """
+    for i in range(0, 2000):
+        if "Joël" in scytale(message, i):
+            return scytale(message, i)
+
+
+
 if __name__ == "__main__":
-    #cle = 
-    print(scytale(message, cle))
+    print(auto_scytale(message))
