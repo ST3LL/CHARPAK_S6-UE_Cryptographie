@@ -95,13 +95,9 @@ def mot_plus_long(message):
 
  
 if __name__ == "__main__":
-    #plt.plot([mot_plus_long(auto_vigenere(message, i)) for i in range(1,20)]) #probabilité d'avoir une longueur de clé de ...+1
+    #plt.plot([mot_plus_long(auto_vigenere(message, i)) for i in range(10,30)]) #probabilité d'avoir une longueur de clé de ...+1
     #plt.show()
     
-    l_cle = 12
-    #message2 = auto_vigenere(message,l_cle)
-    #plt.plot([mot_plus_long(auto_vigenere(message2, i)) for i in range(1,10)]) #probabilité d'avoir une longueur de clé de ...+1
-    #plt.show()
-    #l2 = 2
+    l_cle = 16
     print(auto_vigenere(message, l_cle))
     
