@@ -111,11 +111,13 @@ def cesar(message, cle):
     new_message = []
     m = list(message)
     for l in m:
-        crypt = chr(cesar_dechiffrage(l, cle))
+        try: #pour éviter des erreurs
+            crypt = chr(cesar_dechiffrage(l, cle))
+        except:
+            crypt = "#"
         new_message.append(crypt)
     new = "".join(new_message)
     return new
-
 
 
 
